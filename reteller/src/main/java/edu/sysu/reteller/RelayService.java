@@ -20,7 +20,7 @@ public class RelayService {
 
         try {
 
-            hearServer.startService();
+            hearServer.startServer();
             retellServer.startServer();
         } catch(AppException e){
 

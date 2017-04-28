@@ -57,7 +57,8 @@ public class HearServiceHandler implements ClientEventHandler,ClientCommandHandl
         //no need to implement it
     }
     public void handleBinary(ClientHandler handler, byte[] data) throws SocketTimeoutException, IOException {
-
+        System.out.println("4123:");
+        Utility.printHexString(data);
         //BASE64Encoder mEncoder= new BASE64Encoder();
         RetellServiceHandler.retellHandler.sendClientBinary(data);
 
