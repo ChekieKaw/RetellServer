@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="java"/>
+	<classpathentry kind="src" path="resources"/>
+	<classpathentry kind="lib" path="/reteller/libs/metouia.jar"/>
+	<classpathentry kind="lib" path="/reteller/libs/QuickServer.jar"/>
+	<classpathentry kind="lib" path="/reteller/libs/QSAdminGUI.jar"/>
+	<classpathentry kind="lib" path="/reteller/libs/commons-digester.jar"/>
+	<classpathentry kind="lib" path="/reteller/libs/QuickServerClient.jar"/>
+	<classpathentry kind="lib" path="/reteller/libs/commons-logging.jar"/>
+	<classpathentry kind="lib" path="/reteller/libs/commons-collections.jar"/>
+	<classpathentry kind="lib" path="/reteller/libs/commons-pool.jar"/>
+	<classpathentry kind="lib" path="/reteller/libs/commons-beanutils.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/libs"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

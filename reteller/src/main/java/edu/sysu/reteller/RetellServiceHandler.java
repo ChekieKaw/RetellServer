@@ -1,9 +1,10 @@
 package edu.sysu.reteller;
 
 import org.quickserver.net.server.*;
+import sun.misc.BASE64Encoder;
 
 import java.io.IOException;
-import java.net.SocketTimeoutException;
+import java.sql.*;
 
 /**
  * Created by sunny on 17-4-26.
@@ -51,11 +52,30 @@ public class RetellServiceHandler implements ClientEventHandler,ClientCommandHan
     public void handleCommand(ClientHandler handler, String command){
         //no need to implement it
     }
-    public void handleBinary(ClientHandler handler, byte[] data) throws SocketTimeoutException, IOException {
+    public void handleBinary(ClientHandler handler, byte[] data) {
         System.out.println("4124");
         Utility.printHexString(data);
-        //BASE64Encoder mEncoder= new BASE64Encoder();
-        HearServiceHandler.hearHandler.sendClientBinary(data);
+        BASE64Encoder mEncoder= new BASE64Encoder();
+        String dataEncoded=mEncoder.encode(data);
+        try {
+            HearServiceHandler.hearHandler.sendClientBinary(data);
+
+        }catch(Exception e){
+            System.out.println("Failed to relay message to port 4123, caching");
+            try {
+                Statement stmt = SQLUtil.getConnection().createStatement();
+                ResultSet rsTables = SQLUtil.getConnection().getMetaData().getTables(null, null, "retell", null);
+                if(!rsTables.next()){
+                    System.out.println("Creating table retell");
+                    stmt.executeUpdate("create table retell(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,  data TEXT NOT NULL, time TIMESTAMP);");
+                }
+                stmt.executeUpdate("INSERT INTO retell VALUES (NULL,'"+dataEncoded+"',CURRENT_TIMESTAMP )");
+                SQLUtil.getConnection().commit();
+            }catch (SQLException ex){
+                System.out.println("Error when accessing database");
+                ex.printStackTrace();
+            }
+        }
 
     }
 }
