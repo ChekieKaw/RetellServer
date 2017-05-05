@@ -1,4 +1,4 @@
-package edu.sysu.reteller;
+package hit.edu.reteller;
 
 import org.quickserver.net.server.*;
 import sun.misc.BASE64Decoder;
@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.sql.*;
 
 /**
- * Created by sunny on 17-4-26.
+ * Created by Jianwei Guo on 17-4-26.
  */
 public class RetellServiceHandler implements ClientEventHandler,ClientCommandHandler,ClientBinaryHandler {
     public static ClientHandler retellHandler;

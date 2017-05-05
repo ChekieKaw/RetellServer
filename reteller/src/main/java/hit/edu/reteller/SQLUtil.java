@@ -1,4 +1,4 @@
-package edu.sysu.reteller;
+package hit.edu.reteller;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

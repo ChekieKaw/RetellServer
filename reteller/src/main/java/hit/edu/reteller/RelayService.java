@@ -1,4 +1,4 @@
-package edu.sysu.reteller;
+package hit.edu.reteller;
 
 import org.quickserver.net.AppException;
 import org.quickserver.net.server.QuickServer;
@@ -8,13 +8,13 @@ public class RelayService {
     public static void main(String s[]) {
 
 
-        QuickServer hearServer=new QuickServer("edu.sysu.reteller.HearServiceHandler");
-        hearServer.setClientBinaryHandler("edu.sysu.reteller.HearServiceHandler");
+        QuickServer hearServer=new QuickServer("hit.edu.reteller.HearServiceHandler");
+        hearServer.setClientBinaryHandler("hit.edu.reteller.HearServiceHandler");
         hearServer.setPort(4123);
-        hearServer.setName("HearServer");
+        hearServer.setName("hit.edu.reteller.HearServer");
         hearServer.setTimeout(3600000);
-        QuickServer retellServer=new QuickServer("edu.sysu.reteller.RetellServiceHandler");
-        retellServer.setClientBinaryHandler("edu.sysu.reteller.RetellServiceHandler");
+        QuickServer retellServer=new QuickServer("hit.edu.reteller.RetellServiceHandler");
+        retellServer.setClientBinaryHandler("hit.edu.reteller.RetellServiceHandler");
         retellServer.setPort(4124);
         retellServer.setName("Retell Server");
         retellServer.setTimeout(3600000);

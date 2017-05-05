@@ -1,7 +1,7 @@
-package edu.sysu.reteller;
+package hit.edu.reteller;
 
 /**
- * Created by sunny on 17-4-26.
+ * Created by Jianweig Guo on 17-4-26.
  */
 // EchoCommandHandler.java
 

@@ -1,4 +1,4 @@
-package edu.sysu.reteller;
+package hit.edu.reteller;
 
 /**
  * Created by sunny on 17-4-27.
