@@ -4,7 +4,7 @@ import org.quickserver.net.AppException;
 import org.quickserver.net.server.QuickServer;
 
 public class RelayService {
-    public static Thread mWorker = new Thread(new CacheRelayWorker());
+
     public static void main(String s[]) {
 
 
@@ -21,7 +21,6 @@ public class RelayService {
 
         try {
             SQLUtil.connect();
-            mWorker.start();
             hearServer.startServer();
             retellServer.startServer();
         } catch(AppException e){

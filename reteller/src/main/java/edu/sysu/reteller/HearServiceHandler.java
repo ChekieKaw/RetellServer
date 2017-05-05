@@ -6,6 +6,7 @@ package edu.sysu.reteller;
 // EchoCommandHandler.java
 
 import org.quickserver.net.server.*;
+import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
 import java.io.IOException;
@@ -21,7 +22,24 @@ public class HearServiceHandler implements ClientEventHandler,ClientCommandHandl
         hearHandler=handler;
         handler.setDataMode(DataMode.BINARY, DataType.IN);
         handler.setDataMode(DataMode.BINARY,DataType.OUT);
+        try{
 
+            Statement stmt = SQLUtil.getConnection().createStatement();
+            Statement stmt_update= SQLUtil.getConnection().createStatement();
+            BASE64Decoder mDecoder=new BASE64Decoder();
+            ResultSet retellSet = stmt.executeQuery("SELECT * FROM retell ORDER BY time");
+            while (retellSet.next()){
+                try {
+                    hearHandler.sendClientBinary(mDecoder.decodeBuffer(retellSet.getString("data")));
+                    stmt_update.executeUpdate("DELETE FROM retell WHERE id=" + String.valueOf(retellSet.getInt("id")) + ";");
+                }catch(Exception e){
+                    //do nothing as well
+                }
+            }
+            SQLUtil.getConnection().commit();
+        }catch (Exception e){
+            System.out.println("falied to relay cache");
+        }
     }
 
     public void lostConnection(ClientHandler handler)

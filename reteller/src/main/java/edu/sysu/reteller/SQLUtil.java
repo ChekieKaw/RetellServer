@@ -34,6 +34,7 @@ public class SQLUtil {
     public static void disconnect(){
         try {
             sqlConn.close();
+
         }catch (Exception e){
             System.out.println("Database disconnect error!");
         }

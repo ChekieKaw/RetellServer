@@ -1,6 +1,7 @@
 package edu.sysu.reteller;
 
 import org.quickserver.net.server.*;
+import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
 import java.io.IOException;
@@ -26,6 +27,25 @@ public class RetellServiceHandler implements ClientEventHandler,ClientCommandHan
         handler.setDataMode(DataMode.BINARY, DataType.IN);
         handler.setDataMode(DataMode.BINARY,DataType.OUT);
 
+        try {
+            Statement stmt = SQLUtil.getConnection().createStatement();
+            Statement stmt_update= SQLUtil.getConnection().createStatement();
+            ResultSet hearSet = stmt.executeQuery("SELECT * FROM hear ORDER BY time");
+            BASE64Decoder mDecoder = new BASE64Decoder();
+
+            while (hearSet.next()) {
+                try {
+                    retellHandler.sendClientBinary(mDecoder.decodeBuffer(hearSet.getString("data")));
+                    stmt_update.executeUpdate("DELETE FROM hear WHERE id=" + String.valueOf(hearSet.getInt("id")) + ";");
+
+                } catch (Exception e) {
+                    //do nothing
+                }
+            }
+            SQLUtil.getConnection().commit();
+        }catch(Exception e){
+
+        }
     }
 
     public void lostConnection(ClientHandler handler)
