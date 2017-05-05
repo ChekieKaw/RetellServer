@@ -2,8 +2,6 @@ package edu.sysu.reteller;
 
 import sun.misc.BASE64Decoder;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -40,7 +38,7 @@ public class CacheRelayWorker implements Runnable {
                         //do nothing as well
                     }
                 }
-
+                Thread.sleep(5);
 
             }catch (Exception e){
                 //System.out.print("Cache");

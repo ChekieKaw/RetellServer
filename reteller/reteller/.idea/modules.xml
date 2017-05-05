@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/reteller.iml" filepath="$PROJECT_DIR$/.idea/modules/reteller.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/reteller_main.iml" filepath="$PROJECT_DIR$/.idea/modules/reteller_main.iml" group="reteller" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/reteller_test.iml" filepath="$PROJECT_DIR$/.idea/modules/reteller_test.iml" group="reteller" />
+    </modules>
+  </component>
+</project>

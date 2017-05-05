@@ -69,7 +69,7 @@ public class HearServiceHandler implements ClientEventHandler,ClientCommandHandl
 
             }catch (SQLException ex){
                 System.out.println("Error when connecting to database");
-                e.printStackTrace();
+                ex.printStackTrace();
             }
         }
     }
